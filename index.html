@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic meta tags for character set and responsive behavior -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Language Translator</title>
+    
+    <!-- Application stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Font Awesome icons library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts - Poppins family for clean modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main container for the entire application -->
+    <div class="container">
+        <!-- Header section with title and theme toggle button -->
+        <header>
+            <h1>Language Translation Tool</h1>
+            <!-- Theme toggle button (moon/sun) for dark/light mode -->
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </header>
+
+        <main>
+            <!-- Main translation interface container with source and target areas -->
+            <div class="translation-container">
+                <!-- Source Text Area - Left side input section -->
+                <div class="text-container source">
+                    <!-- Control bar with language selector and buttons -->
+                    <div class="controls">
+                        <!-- Source language dropdown (auto-detection enabled) -->
+                        <select id="source-language" class="language-select" aria-label="Source Language">
+                            <option value="auto">Detect Language</option>
+                            <!-- Languages will be dynamically populated by JavaScript -->
+                        </select>
+                        <!-- Control buttons for the source text -->
+                        <div class="buttons">
+                            <!-- Clear text button -->
+                            <button id="clear-source" class="control-btn" title="Clear text">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <!-- Text-to-speech button (will be disabled if no voice is available) -->
+                            <button id="speak-source" class="control-btn" title="Listen">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Text input area for the source language -->
+                    <textarea id="source-text" placeholder="Enter text to translate..."></textarea>
+                    <!-- Character counter with 5000 char limit -->
+                    <div class="char-count"><span id="char-counter">0</span>/5000</div>
+                </div>
+
+                <!-- Exchange Button - Swaps source and target languages -->
+                <button id="exchange-btn" class="exchange-btn" title="Exchange languages">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+
+                <!-- Target Text Area - Right side output section -->
+                <div class="text-container target">
+                    <!-- Control bar with language selector and buttons -->
+                    <div class="controls">
+                        <!-- Target language dropdown (default: English) -->
+                        <select id="target-language" class="language-select" aria-label="Target Language">
+                            <option value="en">English</option>
+                            <!-- Languages will be dynamically populated by JavaScript -->
+                        </select>
+                        <!-- Control buttons for the target text -->
+                        <div class="buttons">
+                            <!-- Copy to clipboard button -->
+                            <button id="copy-target" class="control-btn" title="Copy to clipboard">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <!-- Text-to-speech button (will be disabled if no voice is available) -->
+                            <button id="speak-target" class="control-btn" title="Listen">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Output area for the translated text (read-only) -->
+                    <div id="target-text" class="target-display" placeholder="Translation will appear here..."></div>
+                </div>
+            </div>
+
+            <!-- Main translation action button -->
+            <button id="translate-btn">Translate</button>
+        </main>
+
+        <!-- Loading spinner overlay (hidden by default) -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Main application JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
